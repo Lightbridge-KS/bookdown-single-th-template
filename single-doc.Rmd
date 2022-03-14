@@ -1,0 +1,133 @@
+---
+title: "R Markdown ภาษาไทย"
+author: "Kittipos Sirivongrungson"
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
+output:
+  bookdown::html_document2:
+    toc: true
+    toc_float: TRUE
+    toc_depth: 2
+    theme:
+      bootswatch: default #zephyr #lumen #cosmo #simplex # And more
+      version: 5
+  bookdown::pdf_document2:
+    citation_package: default
+    latex_engine: xelatex  # จำเป็นต้องใช้ xelatex สำหรับภาษาไทย
+    includes:
+      in_header: "preTeX/thai-preamble.tex" # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้
+    keep_tex: false # change to "true" to keep intermediate LaTeX for debug
+
+bibliography: [book.bib, packages.bib]
+csl: csl/elsevier-with-titles.csl
+link-citations: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE, eval = TRUE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+```{=latex}
+\sloppy % ช่วยตัดคำภาษาไทย
+```
+## Bookdown
+
+> หมายเหตุ: ก่อนจะ **Knit** เอกสารฉบับนี้จะต้องมี [bookdown package](https://pkgs.rstudio.com/bookdown/) install
+
+[bookdown package](https://bookdown.org) [@bookdown2016] เป็น R package ช่วยในการเขียนหนังสือ และ รายงาน/บทความ ด้วย R Markdown
+
+เมื่อกดปุ่ม **Knit** เอกสารจะถูกสร้างขึ้น โดยจะมีการรวมกันของทั้งเนื้อหาและผลลัพท์ของ R code chunk ที่แทรกอยู่ในเอกสาร โดยคุณสามารถแทรก R code chunk ได้แบบนี้:
+
+```{r cars}
+summary(cars)
+```
+
+------------------------------------------------------------------------
+
+# เอกสารภาษาไทยแบบ PDF
+
+นี่คือตัวอย่างแบบง่ายสำหรับการใช้ภาษาไทยใน \LaTeX
+
+## Text Formatting (รูปแบบตัวอักษร)
+
+**ตัวหนา** *ตัวเอียง* ***เอียงและหนา*** `โค้ด` ~~ขีดค่า~~
+
+subscript สร้างโดยล้อมรอบตัวอักษรด้วย `~` เช่น H~2~SO~4~
+
+superscript สร้างโดยล้อมรอบตัวอักษรด้วย caret (`^`) 2 ด้าน เช่น Fe^2+^
+
+## Link and Cross References (ลิ้งค์/การอ้างอิง)
+
+Link ไปยัง web page หรือ section ใช้ syntax: `[text](url)`
+
+-   [Bookdown](https://bookdown.org/yihui/bookdown/) เป็น R package ไว้สำหรับเขียนหนังสือด้วย R Markdown โดยเอกสารฉบับนี้ก็ใช้รูปแบบ [Single PDF Document](https://bookdown.org/yihui/bookdown/a-single-document.html) ซึ่งจะมี support สำหรับ automatic numbering และ cross-referencing ได้ด้วย
+
+-   ไปที่ [plot](#plot) นี้สำหรับการเปลี่ยนแปลงของ pressure กับ temperature
+
+Bookdown มีข้อที่เหนือว่า R Markdown ในส่วนที่สามารถทำ Cross reference ไปยัง section ได้แบบนี้
+
+-   ไปที่ Section \@ref(math) สำหรับสมการคณิตศาสตร์
+
+อ่านเพิ่มเติมได้ [ที่นี่](https://bookdown.org/yihui/bookdown/cross-references.html)
+
+## Foot Note
+
+สำหรับฟุตโน้ตใช้แบบนี้เพื่อ[^1]
+
+[^1]: แสดงข้อความด้านล่างเอกสารแต่ละหน้า
+
+## Citation
+
+LaTeX เป็น program สำหรับ type setting ที่ดี [@texbook]
+
+## Lists
+
+### Bullet Lists
+
+-   ผัก
+
+-   ผลไม้
+
+    -   มังคุด
+    -   ส้มโอ
+
+### Numbered Lists
+
+1.  ลำดับหนึ่ง
+2.  ลำดับสอง
+
+### Definition Lists
+
+ความหมาย
+
+:   นิยาม
+
+## Paragraph
+
+เมื่อจะ indent paragraph ที่บรรทัดแรกให้เริ่มต้นด้วย `|` จากนั้นตามด้วย 4 space
+
+|    โพสต์ซามูไร ไฮแจ็คพรีเมียมนู้ด โมจิเทรลเล่อร์แอลมอนด์แซนด์วิชฟินิกซ์ มยุราภิรมย์ตัวเองเซาท์นู้ด แมนชั่นวีนสปายกู๋ แดนเซอร์ริคเตอร์ โมเต็ลการันตีแชมปิยองรีเสิร์ช วาไรตี้ซาดิสต์เซ็นทรัลโยโย่สันทนาการ คอมเพล็กซ์เห็นด้วยกุมภาพันธ์ช็อปปิ้งบอยคอต ราชบัณฑิตยสถานอุด้ง พันธกิจเครป เจ๊แซ็กสตูดิโอเคลียร์ ดิสเครดิตโต๋เต๋เพาเวอร์ โปรเจคท์ ฮันนีมูนพลานุภาพแทงโก้ฟลุคเซ็นเซอร์ เซลส์เบบี้
+
+## Math (คณิตศาสตร์) {#math}
+
+### Math Equation (สมการทางคณิตศาสตร์)
+
+```{=tex}
+\begin{equation}
+  (\#eq:binom)
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+\end{equation}
+```
+### Theorems & Proofs (ทฤษฎีการพิสูจน์)
+
+::: {#pyth .theorem name="Pythagorean theorem"}
+สำหรับสามเหลี่ยมมุมฉาก ถ้า $c$ เป็นความยาวด้านตรงข้ามมุมฉาก และ $a$ กับ $b$ เป็นความยาวของอีกสองด้านที่เหลือ จะได้
+
+$$a^2 + b^2 = c^2$$
+:::
